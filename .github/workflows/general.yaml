@@ -64,7 +64,9 @@ jobs:
         run: pnpm install:ci
       - name: Login Publisher
         run: pnpm login:ci
-      - name: Release Extension
+      - name: Build Package
+        run: pnpm build
+      - name: Release Package
         uses: cycjimmy/semantic-release-action@v5
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
