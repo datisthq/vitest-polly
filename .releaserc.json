@@ -8,13 +8,13 @@
     ],
     [
       "@semantic-release/exec",
-      { "prepareCmd": "pnpm /version/ ${nextRelease.version}" }
+      { "prepareCmd": "pnpm version:ci ${nextRelease.version}" }
     ],
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "pnpm /build/",
-        "publishCmd": "pnpm /publish/"
+        "prepareCmd": "pnpm build",
+        "publishCmd": "pnpm publish:ci"
       }
     ],
     ["@semantic-release/github"]
