@@ -24,3 +24,7 @@ test("fetches a user", async () => {
   expect(response.status).toBe(200)
 })
 ```
+
+## Credits
+
+- A solution by [ekrata-main](https://github.com/ekrata-main) and [damonbauer](https://github.com/damonbauer) - https://github.com/Netflix/pollyjs/issues/499#issuecomment-2254483748
