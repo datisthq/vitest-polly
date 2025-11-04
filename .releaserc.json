@@ -10,6 +10,7 @@
       "@semantic-release/exec",
       { "publishCmd": "pnpm version:ci ${nextRelease.version}" }
     ],
+    ["@semantic-release/exec", { "publishCmd": "pnpm build" }],
     ["@semantic-release/exec", { "publishCmd": "pnpm publish:ci" }],
     ["@semantic-release/github"]
   ]
