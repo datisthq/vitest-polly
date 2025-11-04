@@ -27,4 +27,4 @@ test("fetches a user", async () => {
 
 ## Credits
 
-- A solution by [ekrata-main](https://github.com/ekrata-main) and [damonbauer](https://github.com/damonbauer) - https://github.com/Netflix/pollyjs/issues/499#issuecomment-2254483748
+- A solution by [ekrata-main](https://github.com/ekrata-main) and [damonbauer](https://github.com/damonbauer) from [pollyjs#499](https://github.com/Netflix/pollyjs/issues/499#issuecomment-2254483748).
