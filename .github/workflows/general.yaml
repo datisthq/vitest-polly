@@ -1,0 +1,71 @@
+name: general
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: package.json
+      - name: Install Dependencies
+        run: pnpm install:ci
+      - name: Build Packages
+        run: pnpm build
+      - name: Test Packages
+        run: pnpm test
+      - name: Upload Coverage
+        uses: codecov/codecov-action@v5
+        with:
+          slug: datisthq/vitest-polly
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  release:
+    needs: [test]
+    environment: release
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    permissions:
+      id-token: write
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v5
+      - name: Setup Uv
+        uses: astral-sh/setup-uv@v6
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: package.json
+      - name: Install Dependencies
+        run: pnpm install:ci
+      - name: Login Publisher
+        run: pnpm login:ci
+      - name: Release Extension
+        uses: cycjimmy/semantic-release-action@v5
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
