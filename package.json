@@ -4,6 +4,7 @@
   "version": "0.0.0-dev",
   "exports": "./build/index.js",
   "sideEffects": false,
+  "files": ["build"],
   "engines": {
     "node": "^24.0.0",
     "pnpm": "^10.0.0"
