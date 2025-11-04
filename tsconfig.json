@@ -2,13 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
 
   "include": ["${configDir}/**/*.ts", "${configDir}/**/*.tsx"],
-  "exclude": [
-    "${configDir}/**/docs/",
-    "${configDir}/**/site/",
-    "${configDir}/**/build/",
-    "${configDir}/**/browser/",
-    "${configDir}/**/compile/"
-  ],
+  "exclude": ["${configDir}/**/build/", "${configDir}/vitest.config.ts"],
 
   "compilerOptions": {
     "target": "ES2022",

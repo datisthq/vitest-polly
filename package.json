@@ -2,7 +2,8 @@
   "name": "vitest-polly",
   "type": "module",
   "version": "0.0.0-dev",
-  "private": true,
+  "exports": "./build/index.js",
+  "sideEffects": false,
   "engines": {
     "node": "^24.0.0",
     "pnpm": "^10.0.0"
@@ -17,7 +18,7 @@
     "login:ci": "pnpm config set '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'",
     "install:ci": "pnpm install --ignore-scripts",
     "prepare": "husky",
-    "publish:ci": "pnpm -r publish --access public --ignore-scripts --no-git-checks",
+    "publish:ci": "pnpm publish --access public --ignore-scripts --no-git-checks",
     "spec": "vitest run",
     "test": "pnpm lint && pnpm type && pnpm spec",
     "type": "tsc --noEmit"
