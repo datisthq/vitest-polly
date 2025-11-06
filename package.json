@@ -9,6 +9,11 @@
     "node": "^24.0.0",
     "pnpm": "^10.0.0"
   },
+  "license": "MIT",
+  "author": "Evgeny Karev",
+  "repository": "https://github.com/datisthq/vitest-polly",
+  "description": "Recording functionality for Vitest with Polly",
+  "keywords": ["vitest", "polly"],
   "scripts": {
     "build": "tsc",
     "bump": "ncu -ws -u",
