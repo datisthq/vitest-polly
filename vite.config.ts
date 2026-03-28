@@ -1,16 +1,25 @@
 import { basename, dirname, join } from "node:path"
-import { loadEnvFile } from "node:process"
-import { configDefaults, defineConfig } from "vitest/config"
-import { coverageConfigDefaults } from "vitest/config"
+import { coverageConfigDefaults, defineConfig } from "vite-plus"
 
-try {
-  loadEnvFile(join(import.meta.dirname, ".env"))
-} catch {}
+const ignorePatterns = ["**/generated/**"]
 
 export default defineConfig({
+  fmt: {
+    semi: false,
+    printWidth: 80,
+    arrowParens: "avoid",
+    ignorePatterns,
+  },
+  lint: {
+    ignorePatterns,
+    options: {
+      typeAware: false,
+      typeCheck: false,
+    },
+  },
   test: {
     include: ["**/*.spec.(ts|tsx)"],
-    exclude: [...configDefaults.exclude, "**/build/**", "**/compile/**"],
+    exclude: ["**/node_modules/**", "**/build/**", "**/compile/**"],
     env: { NODE_OPTIONS: "--no-warnings" },
     testTimeout: 60 * 1000,
     passWithNoTests: true,
@@ -25,14 +34,9 @@ export default defineConfig({
         "**/compile/**",
         "**/coverage/**",
         "**/examples/**",
-        "**/entrypoints/**",
-        "browser/**",
-        "docs/**",
-        "service/**",
-        "site/**",
       ],
     },
-    resolveSnapshotPath: (testPath, snapExtension) => {
+    resolveSnapshotPath: (testPath: string, snapExtension: string) => {
       return (
         join(dirname(testPath), "fixtures", "generated", basename(testPath)) +
         snapExtension

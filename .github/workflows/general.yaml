@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
       - name: Setup Pnpm
         uses: pnpm/action-setup@v4
       - name: Setup Node
@@ -51,8 +49,6 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v5
-      - name: Setup Uv
-        uses: astral-sh/setup-uv@v6
       - name: Setup Pnpm
         uses: pnpm/action-setup@v4
       - name: Setup Node
