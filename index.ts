@@ -1,1 +1,1 @@
-export { useRecording } from "./recording/index.ts"
+export { useRecording } from "./hooks/recording.ts";
