@@ -45,7 +45,8 @@ export function useRecording(
   })
 
   beforeEach(({ task }) => {
-    polly.recordingName = options.recordingName ?? task.fullName
+    polly.recordingName =
+      options.recordingName ?? task.fullTestName ?? task.name
   })
 
   afterAll(async () => {
