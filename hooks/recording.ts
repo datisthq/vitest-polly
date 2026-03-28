@@ -27,7 +27,8 @@ export function useRecording(
 ) {
   let polly: Polly
 
-  beforeAll((_context, suite) => {
+  // @ts-ignore vitest 4.1 fixture destructuring
+  beforeAll(({ task: suite }) => {
     polly = new Polly(options.recordingName ?? suite.name, {
       adapters: ["fetch"],
       mode: "replay",
@@ -44,9 +45,8 @@ export function useRecording(
     })
   })
 
-  beforeEach(context => {
-    // Overwrite recording name on a per-test basis
-    polly.recordingName = options.recordingName ?? getFullTaskName(context.task)
+  beforeEach(({ task }) => {
+    polly.recordingName = options.recordingName ?? getFullTaskName(task)
   })
 
   afterAll(async () => {
