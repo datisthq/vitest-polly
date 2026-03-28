@@ -44,16 +44,11 @@ export function useRecording(
     })
   })
 
-  beforeEach(({}, suite) => {
-    polly.recordingName = options.recordingName ?? getFullTaskName(suite)
+  beforeEach(({ task }) => {
+    polly.recordingName = options.recordingName ?? task.fullName
   })
 
   afterAll(async () => {
     await polly.stop()
   })
-}
-
-function getFullTaskName(item: any): string {
-  const suiteName = item.suite ? getFullTaskName(item.suite) : undefined
-  return [suiteName, item.name].filter(Boolean).join("-")
 }

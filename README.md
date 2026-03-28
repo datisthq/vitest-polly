@@ -2,6 +2,13 @@
 
 Recording functionality for Vitest with Polly
 
+## Requirements
+
+Requires one of:
+
+- **vitest** >= 4.1.0
+- **vite-plus** >= 0.1.14
+
 ## Installation
 
 ```sh
