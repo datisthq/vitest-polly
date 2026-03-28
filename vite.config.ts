@@ -18,7 +18,7 @@ export default defineConfig({
     },
   },
   test: {
-    include: ["**/*.spec.(ts|tsx)"],
+    include: ["**/*.unit.(ts|tsx)"],
     exclude: ["**/node_modules/**", "**/build/**", "**/compile/**"],
     env: { NODE_OPTIONS: "--no-warnings" },
     testTimeout: 60 * 1000,

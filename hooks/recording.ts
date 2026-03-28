@@ -1,18 +1,17 @@
-import FetchAdapter from "@pollyjs/adapter-fetch";
-import { Polly } from "@pollyjs/core";
-import FSPersister from "@pollyjs/persister-fs";
+import FetchAdapter from "@pollyjs/adapter-fetch"
+import { Polly } from "@pollyjs/core"
+import FSPersister from "@pollyjs/persister-fs"
 
-const { afterAll, beforeAll, beforeEach } = (await import("vite-plus/test").catch(
-  () => import("vitest"),
-)) as typeof import("vitest");
+const { afterAll, beforeAll, beforeEach } =
+  await import("vite-plus/test").catch(() => import("vitest"))
 
 // @ts-ignore
-Polly.register(FSPersister);
+Polly.register(FSPersister)
 
 // It emits a deprecation warning, but at the moment there is not
 // working alternative for the fetch adapter
 // @ts-ignore
-Polly.register(FetchAdapter);
+Polly.register(FetchAdapter)
 
 /**
  * Sets up Polly for recording and replaying HTTP interactions in tests.
@@ -23,8 +22,10 @@ Polly.register(FetchAdapter);
  * @param {string} [options.recordingName] - The name of the recording. If not provided, the suite name will be used.
  * @param {string} [options.recordingPath] - The path to save the recordings. If not provided, the recordings will be saved in a "fixtures/generated" directory next to the test file.
  */
-export function useRecording(options: { recordingName?: string; recordingPath?: string } = {}) {
-  let polly: Polly;
+export function useRecording(
+  options: { recordingName?: string; recordingPath?: string } = {},
+) {
+  let polly: Polly
 
   beforeAll((_context, suite) => {
     polly = new Polly(options.recordingName ?? suite.name, {
@@ -40,20 +41,20 @@ export function useRecording(options: { recordingName?: string; recordingPath?: 
             `${suite.file.filepath.substring(0, suite.file.filepath.lastIndexOf("/"))}/fixtures/generated`,
         },
       },
-    });
-  });
+    })
+  })
 
-  beforeEach((context) => {
+  beforeEach(context => {
     // Overwrite recording name on a per-test basis
-    polly.recordingName = options.recordingName ?? getFullTaskName(context.task);
-  });
+    polly.recordingName = options.recordingName ?? getFullTaskName(context.task)
+  })
 
   afterAll(async () => {
-    await polly.stop();
-  });
+    await polly.stop()
+  })
 }
 
 function getFullTaskName(item: any): string {
-  const suiteName = item.suite ? getFullTaskName(item.suite) : undefined;
-  return [suiteName, item.name].filter(Boolean).join("-");
+  const suiteName = item.suite ? getFullTaskName(item.suite) : undefined
+  return [suiteName, item.name].filter(Boolean).join("-")
 }

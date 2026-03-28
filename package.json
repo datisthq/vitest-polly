@@ -1,39 +1,52 @@
 {
   "name": "vitest-polly",
-  "type": "module",
   "version": "0.0.0-dev",
-  "exports": "./build/index.js",
-  "sideEffects": false,
-  "files": ["build"],
-  "engines": {
-    "node": "^24.0.0",
-    "pnpm": "^10.0.0"
-  },
+  "description": "Recording functionality for Vitest with Polly",
+  "keywords": [
+    "polly",
+    "vitest"
+  ],
   "license": "MIT",
   "author": "Evgeny Karev",
   "repository": "https://github.com/datisthq/vitest-polly",
-  "description": "Recording functionality for Vitest with Polly",
-  "keywords": ["vitest", "polly"],
+  "files": [
+    "build"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": "./build/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsgo",
     "bump": "ncu -ws -u",
     "clean": "rm -rf package-lock.yaml node_modules build",
     "coverage": "sensible-browser coverage/index.html",
     "format": "vp fmt",
-    "install:ci": "pnpm install --ignore-scripts",
     "lint": "vp fmt --check && vp lint",
     "login:ci": "pnpm config set '//registry.npmjs.org/:_authToken=${NPM_TOKEN}'",
     "prepare": "is-ci || lefthook install",
     "publish:ci": "pnpm publish --access public --ignore-scripts --no-git-checks",
     "setversion": "pnpm version --no-git-tag-version",
-    "spec": "vp test",
-    "test": "pnpm lint && pnpm type && pnpm spec",
-    "type": "tsc --noEmit"
+    "unit": "vp test",
+    "test": "pnpm lint && pnpm type && pnpm unit",
+    "type": "tsgo --noEmit"
   },
   "dependencies": {
     "@pollyjs/adapter-fetch": "^6.0.6",
     "@pollyjs/core": "^6.0.6",
     "@pollyjs/persister-fs": "^6.0.6"
+  },
+  "devDependencies": {
+    "@evilmartians/lefthook": "^2.1.4",
+    "@semantic-release/exec": "7.1.0",
+    "@types/node": "24.2.0",
+    "@typescript/native-preview": "7.0.0-dev.20260328.1",
+    "@vitest/coverage-v8": "^4.1.2",
+    "conventional-changelog-conventionalcommits": "9.1.0",
+    "is-ci": "^4.1.0",
+    "npm-check-updates": "18.0.1",
+    "semantic-release": "24.2.9",
+    "vite-plus": "^0.1.14",
+    "vitest": "^4.1.2"
   },
   "peerDependencies": {
     "vite-plus": ">=0.1.10",
@@ -47,18 +60,9 @@
       "optional": true
     }
   },
-  "devDependencies": {
-    "@evilmartians/lefthook": "^2.1.4",
-    "@semantic-release/exec": "7.1.0",
-    "@types/node": "24.2.0",
-    "@vitest/coverage-v8": "^4.1.2",
-    "conventional-changelog-conventionalcommits": "9.1.0",
-    "is-ci": "^4.1.0",
-    "npm-check-updates": "18.0.1",
-    "semantic-release": "24.2.9",
-    "typescript": "5.9.2",
-    "vite-plus": "^0.1.14",
-    "vitest": "^4.1.2"
+  "engines": {
+    "node": "^24.0.0",
+    "pnpm": "^10.0.0"
   },
   "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
 }
