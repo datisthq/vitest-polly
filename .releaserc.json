@@ -11,7 +11,7 @@
       { "publishCmd": "pnpm setversion ${nextRelease.version}" }
     ],
     ["@semantic-release/exec", { "publishCmd": "pnpm build" }],
-    ["@semantic-release/exec", { "publishCmd": "pnpm publish:ci" }],
+    ["@semantic-release/exec", { "publishCmd": "pnpm release" }],
     ["@semantic-release/github"]
   ]
 }

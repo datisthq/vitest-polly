@@ -58,10 +58,7 @@ jobs:
           node-version-file: package.json
       - name: Install Dependencies
         run: pnpm install
-      - name: Login Publisher
-        run: pnpm login:ci
       - name: Release Package
         uses: cycjimmy/semantic-release-action@v5
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
