@@ -22,7 +22,7 @@
     "coverage": "sensible-browser coverage/index.html",
     "format": "vp fmt",
     "lint": "vp fmt --check && vp lint",
-    "prepare": "is-ci || lefthook install",
+    "prepare": "lefthook install",
     "release": "pnpm -r publish --access public --ignore-scripts --no-git-checks",
     "setversion": "pnpm version --no-git-tag-version",
     "unit": "vp test",
@@ -35,13 +35,12 @@
     "@pollyjs/persister-fs": "^6.0.6"
   },
   "devDependencies": {
-    "@evilmartians/lefthook": "^2.1.4",
     "@semantic-release/exec": "7.1.0",
     "@types/node": "24.2.0",
     "@typescript/native-preview": "7.0.0-dev.20260328.1",
     "@vitest/coverage-v8": "^4.1.2",
     "conventional-changelog-conventionalcommits": "9.1.0",
-    "is-ci": "^4.1.0",
+    "lefthook": "^2.1.5",
     "npm-check-updates": "18.0.1",
     "semantic-release": "24.2.9",
     "vite-plus": "^0.1.14",
