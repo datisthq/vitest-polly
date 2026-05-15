@@ -1,1 +1,3 @@
-dangerouslyAllowAllBuilds: true
+allowBuilds:
+  esbuild: true
+  lefthook: true
