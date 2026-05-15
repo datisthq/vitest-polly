@@ -18,7 +18,6 @@
   "scripts": {
     "build": "tsgo",
     "bump": "ncu -ws -u",
-    "clean": "rm -rf package-lock.yaml node_modules build",
     "coverage": "sensible-browser coverage/index.html",
     "format": "vp fmt",
     "lint": "vp fmt --check && vp lint",
