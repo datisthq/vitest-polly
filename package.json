@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "author": "Evgeny Karev",
-  "repository": "https://github.com/datisthq/vitest-polly",
+  "repository": "https://github.com/fairspec/vitest-polly",
   "files": [
     "build"
   ],
