@@ -2,8 +2,9 @@ import FetchAdapter from "@pollyjs/adapter-fetch"
 import { Polly } from "@pollyjs/core"
 import FSPersister from "@pollyjs/persister-fs"
 
-const { afterAll, beforeAll, beforeEach } =
-  await import("vite-plus/test").catch(() => import("vitest"))
+const { afterAll, beforeAll, beforeEach } = await import("vite-plus/test").catch(
+  () => import("vitest"),
+)
 
 // @ts-ignore
 Polly.register(FSPersister)
@@ -45,8 +46,7 @@ export function useRecording(
   })
 
   beforeEach(({ task }) => {
-    polly.recordingName =
-      options.recordingName ?? task.fullTestName ?? task.name
+    polly.recordingName = options.recordingName ?? task.fullTestName ?? task.name
   })
 
   afterAll(async () => {
