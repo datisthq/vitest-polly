@@ -29,8 +29,7 @@
     "type": "tsgo --noEmit",
     "leaks": "gitleaks git --config=.gitleaks.toml --verbose --redact",
     "vulns": "semgrep --config=p/typescript --config=p/nodejs --config=p/owasp-top-ten --config=p/secrets --exclude=\"**/fixtures/**\" --metrics=off",
-    "scan": "pnpm leaks && pnpm vulns",
-    "vers": "pnpm version --no-git-tag-version"
+    "scan": "pnpm leaks && pnpm vulns"
   },
   "dependencies": {
     "@pollyjs/adapter-fetch": "^6.0.6",
@@ -38,14 +37,11 @@
     "@pollyjs/persister-fs": "^6.0.6"
   },
   "devDependencies": {
-    "@semantic-release/exec": "7.1.0",
     "@types/node": "24.2.0",
     "@typescript/native-preview": "7.0.0-dev.20260328.1",
     "@vitest/coverage-v8": "4.1.11",
-    "conventional-changelog-conventionalcommits": "9.1.0",
     "lefthook": "^2.1.5",
     "npm-check-updates": "23.1.0",
-    "semantic-release": "24.2.9",
     "vite-plus": "0.3.0",
     "vitest": "4.1.11"
   },
