@@ -70,4 +70,5 @@ messages.js
 .user/
 tmuxp.yaml
 /.claude/
+/.cursor/
 .vitest/
