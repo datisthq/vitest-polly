@@ -1,6 +1,6 @@
 {
   "name": "vitest-polly",
-  "version": "0.0.0-dev",
+  "version": "2.1.1",
   "description": "Recording functionality for Vitest with Polly",
   "keywords": [
     "polly",
